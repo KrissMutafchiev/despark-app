@@ -1,3 +1,29 @@
-<h1>
-  {{title}}
-</h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 jumbotron">
+      <h1>Article List</h1>
+      <div class="row">
+        <ul *ngFor="let article of articles" [class.selected]="article === selectedArticle" (click) = onSelect(article) class="col-md-12">
+          <li  class="box box-hidden" (click)="onSelect(article)">
+            <div class="row">
+              <div class="col-md-3">
+                <img src="{{article.imageUrl}}" alt="test" height="200px" width="200px">
+              </div>
+              <div class="col-md-9">
+                <a [routerLink]="['article', article.id]"><h2 >{{article.title}}</h2></a>
+                <p>{{article.text}}</p>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+        <input id="load-more" type="button" class="btn" value="Load more">
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

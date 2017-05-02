@@ -1,10 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 jumbotron">
+      <a routerLink="home">HOME</a>
+      <a routerLink="article/id-1">XXXX</a>
+      <h1>Article List</h1>
+      <div class="row">
+        <ul *ngFor="let article of articles " class="col-md-12">
+          <li  class="box box-hidden" (click)="onSelect(article)">
+            <div class="row">
+              <div class="col-md-3">
+                <img [src]="article.imageUrl" alt="test" height="200px" width="200px">
+              </div>
+              <div class="col-md-9">
+                <a [routerLink]="['article', article.id]"><h2 #titleTest>{{article.title}}</h2></a>
+                <p>{{article.text}}</p>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+        <input id="load-more" type="button" class="btn" value="Load more">
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <router-outlet></router-outlet>
+  </div>
+  </div>
+</div>
+<article-detail [articles]="articlesDetail" *ngFor="let i of articlesDetail">
+  <p>{{i.id}}</p>
+</article-detail>

@@ -1,22 +1,24 @@
 /**
  * Created by krisd3v on 28.4.2017 г..
  */
-import { Component , OnInit } from '@angular/core';
-import { ArticlesListService } from './articleList.service';
+import { Component, OnInit } from '@angular/core';
+import { ArticleService } from './articles.service';
 
 @Component({
   selector:'article-list',
-  template:`<h1>TEST</h1>`
-
+  templateUrl:'./articles-list.component.html',
+  providers:[ArticleService]
 })
 
 export class ArticleListComponent implements OnInit{
   articles = [];
 
-  constructor(private _articlesService:ArticleListService){}
+  constructor(private _articlesService: ArticleService){}
+
   ngOnInit(){
     this._articlesService.getArticles()
       .subscribe(resArticlesData => this.articles = resArticlesData );
   }
+
 
 }
