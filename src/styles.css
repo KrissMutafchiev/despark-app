@@ -2,3 +2,11 @@
 .box-hidden{
   display: none;
 }
+
+#load-more{
+  margin: 0px auto;
+  display: inherit;
+}
+.description-detail{
+  margin-top:50px;
+}

@@ -21,30 +21,21 @@ export class ArticleDetail{
   articleImageUrl:string;
   articleComment:any[];
 
-  @Input() article: Article;
 
-  constructor(private route: ActivatedRoute ) {
+  detailArt: Article;
 
-    this.route.params.subscribe(
-      params => this.articleID = params['id']
-    );
+  constructor(private route: ActivatedRoute , private _articleService:ArticleService  ) {
+    this.detailArt = new Article();
 
-    this.route.params.subscribe(
-      params => this.articleTitle = params['title']
-    );
 
     this.route.params.subscribe(
-      params => this.articleImageUrl = params['imageUrl']
-    );
+      (params) => {
+        this.articleID = params['id'];
+        console.log(this.articleID);
+        this._articleService.articleID(this.articleID).subscribe( article => {this.detailArt = article});
 
-    this.route.params.subscribe(
-      params => this.articleText = params['text']
-    );
-
-    this.route.params.subscribe(
-      params => this.articleComment = params['comments']
-    );
-
+        console.log(this.detailArt)
+      });
   }
 
 }

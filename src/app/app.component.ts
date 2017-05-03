@@ -14,7 +14,7 @@ export class Article {
   title: string;
   imageUrl: string;
   text: string;
-  comment:any[];
+  comments:any[];
 }
 
 
@@ -28,6 +28,7 @@ export class Article {
 
 
 export class AppComponent  implements OnInit {
+
   titleApp = 'app works!';
   selectedArticle: Article;
 
@@ -40,9 +41,12 @@ export class AppComponent  implements OnInit {
       .subscribe(resArticlesData => this.articles = resArticlesData );
   }
 
+
+
   onSelect(prod: Article): void {
+    isClassVisible:false;
     this.selectedArticle = prod;
-    this._router.navigate(["/article", prod]);
+    this._router.navigate(["/article", prod.id]);
 
   }
 

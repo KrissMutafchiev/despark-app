@@ -22,4 +22,11 @@ export class ArticleService{
       .map((response:Response)=> response.json());
   }
 
+  articleID(articID){
+    return this.getArticles().map( data => {console.log(data); return data; })
+      .concatMap(arr => Observable.from(arr))
+      .filter( (article:any) => article.id === articID )
+  }
+
+
 }
