@@ -10,3 +10,17 @@
 .description-detail{
   margin-top:50px;
 }
+
+.primary-comment-text,.child-comment-text , .second-child-comment-text{
+  display: none;
+}
+
+.inside-comment{
+  font-size: 18px;
+  font-weight: bold;
+  color: #3b708f;
+}
+
+.inside-text-area ,.inside-text-area-inside{
+  margin-left:30px;
+}

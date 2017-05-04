@@ -34,6 +34,7 @@ export class AppComponent  implements OnInit {
 
   articles:Article[];
 
+
   constructor(private _router: Router , private _articlesService:ArticleService){}
 
   ngOnInit(){
@@ -44,7 +45,6 @@ export class AppComponent  implements OnInit {
 
 
   onSelect(prod: Article): void {
-    isClassVisible:false;
     this.selectedArticle = prod;
     this._router.navigate(["/article", prod.id]);
 

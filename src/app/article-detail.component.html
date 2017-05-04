@@ -10,13 +10,51 @@
   </div>
   <div class="row">
     <h3>Comments</h3>
-    <div *ngFor="let comment of detailArt.comments">
-        <div class="panel panel-success">
+    <textarea id="addComment" class="reply"></textarea>
+    <div id="primary-comment-container"></div>
+    <div  *ngFor="let comment of detailArt.comments">
+        <div class="panel panel-success" >
           <div class="panel-heading">
-            <h3 class="panel-title">Author: {{comment.author}}</h3>
+            <h3 class="panel-title" >Author: {{comment.author}}
+              <span class="pull-right" >
+                  <button class="badge primary-comment" >  replies</button>
+                  <button  class="badge reply" >reply</button>
+              </span>
+            </h3>
           </div>
-          <div class="panel-body">
-            Comment:{{comment.text}}
+          <div  class=" ">
+           <p><span class="inside-comment">Comment:</span> {{comment.text}}</p>
+            <div id="{{comment.author}}" class="panel-body primary-comment-text">
+              <div class="panel panel-info" *ngFor="let replyComment of comment.replies">
+                <div class="panel-heading">
+                  <p>Author: {{replyComment.author}}
+                    <span class="pull-right">
+                        <button class="badge child-comment" > replies</button>
+                        <button class="badge reply" >reply</button>
+                    </span>
+                  </p>
+                </div>
+                <div class="">
+                  <p><span class="inside-comment">Comment:</span>{{replyComment.text}}</p>
+                  <div id="{{replyComment.author}}" class="child-comment-text panel-body">
+                    <div class="panel panel-warning" *ngFor="let replyCommentReply of replyComment.replies">
+                      <div class="panel-heading">
+                        <p>Author: {{replyCommentReply.author}}
+                          <span class="pull-right">
+                            <button class="badge second-child-comment" > replies</button>
+                            <button class="badge reply-inside-comment" >reply</button>
+                          </span>
+                        </p>
+                        <div >
+                          <p><span class="inside-comment">Comment:</span>{{replyCommentReply.text}}</p>
+                          <div id="{{replyCommentReply.author}}" class="panel-body  second-child-comment-text"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
     </div>
